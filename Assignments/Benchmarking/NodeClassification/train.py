@@ -2,7 +2,7 @@ import torch
 import argparse
 import time
 #from torch.utils.tensorboard import SummaryWriter
-from sklearn.metrics import f1_score, precision_score, recall_score
+from sklearn.metrics import f1_score, precision_score, recall_score, roc_auc_score
 from torch_geometric.datasets import PPI
 from torch.utils.data import ConcatDataset
 from torch_geometric.data import DataLoader
@@ -20,12 +20,15 @@ parser.add_argument('--num_layers', type=int,
                     help='Number of graph conv layers')
 parser.add_argument('--hidden_dim', type=int,
                     help='Training hidden size')
+parser.add_argument('--aggregator', type=str,
+                    help='Aggregator for GraphSAGE')
 parser.add_argument('--epochs', type=int,
                     help='Number of training epochs')
 
 parser.set_defaults(model_type='GCN',
                     num_layers=1,
                     hidden_dim=20,
+                    aggregator='mean',
                     epochs=200)
 args = parser.parse_args()
 
@@ -51,6 +54,21 @@ learning_rate = 0.001
 # Inintialize tensorboard SummaryWriter
 #writer = SummaryWriter('runs/ppi_mnc_3')
 
+# Files for results
+filenames = []
+if (args.model_type == 'SAGE'):
+    filenames.append('./results/SAGE/fold_results' +
+                     'SAGE' + args.aggregator + str(args.num_layers) + '.txt')
+    filenames.append('./results/SAGE/final_results' +
+                     'SAGE' + args.aggregator + str(args.num_layers) + '.txt')
+else:
+    filenames.append('./results/GCN/fold_results' +
+                     'GCN' + args.aggregator + str(args.num_layers) + '.txt')
+    filenames.append('./results/GCN/final_results' +
+                     'GCN' + args.aggregator + str(args.num_layers) + '.txt')
+fold_res = open(filenames[0], 'w')
+final_res = open(filenames[1], 'w')
+
 # Start print
 print('--------------------------------')
 for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
@@ -73,13 +91,15 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
     # Initialize the model and
     if (args.model_type == 'SAGE'):
         model = GraphSAGE(train_dataset, args.num_layers,
-                          args.hidden_dim).to(device)
+                          args.hidden_dim, args.aggregator).to(device)
     elif (args.model_type == 'GCN'):
         model = GCN(train_dataset, args.num_layers,
                     args.hidden_dim).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
     # Run the training loop for defined number of epochs
+    start_time = time.time()
+    training_time = []
     for epoch in range(0, num_epochs):
         # Print epoch
         print(f'Starting epoch {epoch+1}')
@@ -103,9 +123,11 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
             # loss accumulation
             total_loss += loss.item() * data.num_nodes
             total_examples += data.num_nodes
-
-        print('Loss: %f' % (total_loss / total_examples))
-        #writer.add_scalar('training_loss', total_loss / total_examples, epoch)
+    end_time = time.time()
+    print('Training time(in seconds): ', end_time - start_time)
+    training_time.append(end_time - start_time)
+    print('Loss: %f' % (total_loss / total_examples))
+    #writer.add_scalar('training_loss', total_loss / total_examples, epoch)
     # writer.close()
     # sys.exit()
 
@@ -137,24 +159,56 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
     Precision = precision_score(
         y, pred, average='micro') if pred.sum() > 0 else 0
     Recall = recall_score(y, pred, average='micro') if pred.sum() > 0 else 0
+    ROC_AUC_Score = roc_auc_score(y, pred)
 
     print('F1-score for fold %d: %f ' % (fold, F1_Score))
     print('Precision score for fold %d: %f' % (fold, Precision))
     print('Recall score for fold %d: %f ' % (fold, Recall))
+    print('ROC-AUC score for fold %d: %f ' % (fold, ROC_AUC_Score))
     print('--------------------------------')
-    results[fold] = (F1_Score, Precision, Recall)
+    results[fold] = (F1_Score, Precision, Recall, ROC_AUC_Score)
+    # write results in file
+    fold_res.writelines('F1-score for fold %d: %f \n' % (fold, F1_Score))
+    fold_res.writelines('Precision score for fold %d: %f \n' %
+                        (fold, Precision))
+    fold_res.writelines('Recall score for fold %d: %f \n' % (fold, Recall))
+    fold_res.writelines('ROC-AUC score for fold %d: %f \n' %
+                        (fold, ROC_AUC_Score))
+    fold_res.writelines('Training time(in seconds) %f: \n' %
+                        (end_time-start_time))
+    fold_res.writelines('\n----------------------------\n')
+
+fold_res.close()
 
 # Print fold results
 print(f'K-FOLD CROSS VALIDATION RESULTS FOR {k_folds} FOLDS')
 print('--------------------------------')
-F1_sum = Recall_sum = Precision_sum = 0.0
+F1_sum = Recall_sum = Precision_sum = ROC_AUC_sum = 0.0
 for key, value in results.items():
     print(f'Fold {key}: {value} %')
     F1_sum += value[0]
     Precision_sum += value[1]
     Recall_sum += value[2]
+    ROC_AUC_sum += value[3]
+
+training_time = np.array(training_time)
+avg_training_time = np.mean(training_time)
 
 #print(F1_sum, Precision_sum, Recall_sum)
 print('Average F1-score: %f' % (F1_sum/len(results.items())))
 print('Average precision-score: %f' % (Precision_sum/len(results.items())))
-print('Average recall-score: %f' % (Recall_sum/len(results.items())))
+print('Average recall-score: %f' % (Recall_sum / len(results.items())))
+print('Average ROC-AUC-score: %f' % (ROC_AUC_sum / len(results.items())))
+
+# write results in file
+final_res.writelines(f'K-FOLD CROSS VALIDATION RESULTS FOR {k_folds} FOLDS\n')
+final_res.writelines('Average F1-score: %f \n' % (F1_sum/len(results.items())))
+final_res.writelines('Average precision-score: %f \n' %
+                     (Precision_sum/len(results.items())))
+final_res.writelines('Average recall-score: %f \n' %
+                     (Recall_sum / len(results.items())))
+final_res.writelines('Average ROC-AUC-score: %f \n' %
+                     (ROC_AUC_sum / len(results.items())))
+final_res.writelines('Average Training time(in seconds): %f \n' %
+                     (avg_training_time))
+final_res.close()

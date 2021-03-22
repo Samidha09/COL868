@@ -23,12 +23,13 @@ class GCN(torch.nn.Module):
         self.lin2.reset_parameters()
 
     def forward(self, dataX, dataY):
+        activation = F.relu  # torch.sigmoid
         x, edge_index = dataX, dataY
-        x = F.relu(self.conv1(x, edge_index))
+        x = activation(self.conv1(x, edge_index))
         for conv in self.convs:
-            x = F.relu(conv(x, edge_index))
+            x = activation(conv(x, edge_index))
         #x = global_mean_pool(x, batch)
-        x = F.relu(self.lin1(x))
+        x = activation(self.lin1(x))
         x = F.dropout(x, p=0.5, training=self.training)
         x = self.lin2(x)
         return x

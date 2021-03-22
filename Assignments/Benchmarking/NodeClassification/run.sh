@@ -1,1 +1,1 @@
-python3 train.py --model_type=GCN --epochs=10
+python3 run.py

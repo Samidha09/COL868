@@ -408,7 +408,7 @@ def load_graphs(dataset_str):
 
         fp = open(dataset_dir + "/Brightkite_totalCheckins.txt", "r")
         lines = fp.readlines()
-        cnt = 0
+
         for line in lines:
             line = line.strip()
             line = line.split()
@@ -417,9 +417,6 @@ def load_graphs(dataset_str):
             feature_id.append(int(line[0]))
             feature.append([time.mktime(time.strptime(
                 line[1], '%Y-%m-%dT%H:%M:%SZ')), float(line[2]), float(line[3])])
-            cnt += 1
-            if (cnt == 10):
-                break
             # print(line)
 
         feature = np.array(feature)
@@ -434,11 +431,11 @@ def load_graphs(dataset_str):
             if (feature_id[i] not in feature_map):
                 feature_map[feature_id[i]] = []
             feature_map[feature_id[i]].append(feature[i])
-        print(feature_map)
+        # print(feature_map)
         feature_actual_map = {}
         for k in feature_map:
             feature_actual_map[k] = np.mean(feature_map[k], axis=0)
-        print(feature_actual_map)
+        # print(feature_actual_map)
 
         comps = [comp for comp in nx.connected_components(G) if len(comp) > 10]
         graphs = [G.subgraph(comp) for comp in comps]

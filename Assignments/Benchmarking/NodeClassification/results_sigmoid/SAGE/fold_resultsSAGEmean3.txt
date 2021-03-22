@@ -1,0 +1,35 @@
+F1-score for fold 0: 0.558231 
+Precision score for fold 0: 0.676803 
+Recall score for fold 0: 0.475012 
+ROC-AUC score for fold 0: 0.583784 
+Training time(in seconds) 25.351055: 
+
+----------------------------
+F1-score for fold 1: 0.472713 
+Precision score for fold 1: 0.718928 
+Recall score for fold 1: 0.352121 
+ROC-AUC score for fold 1: 0.550212 
+Training time(in seconds) 22.855708: 
+
+----------------------------
+F1-score for fold 2: 0.476061 
+Precision score for fold 2: 0.694543 
+Recall score for fold 2: 0.362142 
+ROC-AUC score for fold 2: 0.541232 
+Training time(in seconds) 22.341278: 
+
+----------------------------
+F1-score for fold 3: 0.500696 
+Precision score for fold 3: 0.689647 
+Recall score for fold 3: 0.393017 
+ROC-AUC score for fold 3: 0.552923 
+Training time(in seconds) 23.703443: 
+
+----------------------------
+F1-score for fold 4: 0.505805 
+Precision score for fold 4: 0.717187 
+Recall score for fold 4: 0.390662 
+ROC-AUC score for fold 4: 0.560951 
+Training time(in seconds) 25.125552: 
+
+----------------------------

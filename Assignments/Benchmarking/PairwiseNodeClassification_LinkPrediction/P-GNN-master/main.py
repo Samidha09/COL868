@@ -250,9 +250,9 @@ for task in ['link', 'link_pair']:
                         label = torch.cat(
                             (label_positive, label_negative)).to(device)
                         loss_test += loss_func(pred, label).cpu().data.numpy()
-                        print("Labels: ", label.flatten().cpu().numpy())
-                        print("Pred: ", out_act(
-                            pred).flatten().data.cpu().numpy())
+                        #print("Labels: ", label.flatten().cpu().numpy())
+                        # print("Pred: ", out_act(
+                        #     pred).flatten().data.cpu().numpy())
                         auc_test += roc_auc_score(label.flatten().cpu().numpy(),
                                                   out_act(pred).flatten().data.cpu().numpy())
                         f1_test += f1_score(label.flatten().cpu().numpy(),

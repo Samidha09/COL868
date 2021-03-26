@@ -72,6 +72,7 @@ final_res = open(filenames[1], 'w')
 # Start print
 print('--------------------------------')
 for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
+    #print(len(train_ids), len(test_ids))
     # Print
     print(f'FOLD {fold}')
     print('--------------------------------')

@@ -97,8 +97,8 @@ def get_tg_dataset(args, dataset_name, use_cache=True, remove_feature=False):
         links_test_list = []
         for i, data in enumerate(dataset):
             if 'link' in args.task:
-                data.mask_link_positive = deduplicate_edges(
-                    data.edge_index.numpy())
+                # data.mask_link_positive = deduplicate_edges(
+                #     data.edge_index.numpy())
                 get_link_mask(data, args.remove_link_ratio, resplit=True,
                               infer_link_positive=True if args.task == 'link' else False)
             links_train_list.append(data.mask_link_positive_train)

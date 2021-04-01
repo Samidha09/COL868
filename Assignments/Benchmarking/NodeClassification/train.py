@@ -37,14 +37,14 @@ path = './Data'
 train_dataset = PPI(path, split='train')
 val_dataset = PPI(path, split='val')
 test_dataset = PPI(path, split='test')
-dataset = ConcatDataset([train_dataset, val_dataset, test_dataset])
+dataset = ConcatDataset([train_dataset, val_dataset])
 
 # Define the K-fold Cross Validator
 k_folds = 5
 kfold = KFold(n_splits=k_folds, shuffle=True)
 
-results = {}  # for fold results
-
+val_results = {}  # for fold results
+results = {}
 # Model configurations
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 criterion = torch.nn.BCEWithLogitsLoss()
@@ -71,23 +71,24 @@ final_res = open(filenames[1], 'w')
 
 # Start print
 print('--------------------------------')
-for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
+for fold, (train_ids, val_ids) in enumerate(kfold.split(dataset)):
     #print(len(train_ids), len(test_ids))
     # Print
     print(f'FOLD {fold}')
     print('--------------------------------')
     train_ids = train_ids.tolist()
-    test_ids = test_ids.tolist()
+    val_ids = val_ids.tolist()
     train_data = []
-    test_data = []
+    val_data = []
     for id in train_ids:
         train_data.append(dataset[id])
-    for id in test_ids:
-        test_data.append(dataset[id])
+    for id in val_ids:
+        val_data.append(dataset[id])
 
     # Dataloader
     train_loader = DataLoader(train_data, batch_size=1, shuffle=True)
-    test_loader = DataLoader(test_data, batch_size=2, shuffle=False)
+    val_loader = DataLoader(val_data, batch_size=2, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=2, shuffle=False)
 
     # Initialize the model and
     if (args.model_type == 'SAGE'):
@@ -139,7 +140,50 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
     # Saving the model
     save_path = f'./model-fold-{fold}.pth'
     torch.save(model.state_dict(), save_path)
-    # Evaluation for this fold
+    # Evaluation for this fold on validation set
+    ys, preds = [], []
+    with torch.no_grad():
+        # Iterate over the test data and generate predictions
+        for i, data in enumerate(val_loader, 0):
+            # pass data to device
+            data = data.to(device)
+            ys.append(data.y)
+            # Generate outputs
+            out = model(data.x, data.edge_index)
+            #print("Output: ", out)
+            preds.append((out > 0).float().cpu())
+
+    y, pred = torch.cat(ys, dim=0).cpu().numpy(
+    ), torch.cat(preds, dim=0).cpu().numpy()
+    # print("Label: ", y)
+    # print("Pred: ", pred)
+    # Compute and Print metrics
+    F1_Score = f1_score(y, pred, average='micro') if pred.sum() > 0 else 0
+    Precision = precision_score(
+        y, pred, average='micro') if pred.sum() > 0 else 0
+    Recall = recall_score(y, pred, average='micro') if pred.sum() > 0 else 0
+    ROC_AUC_Score = roc_auc_score(y, pred)
+
+    print('---------VALIDATION-------------')
+    print('F1-score for fold %d: %f ' % (fold, F1_Score))
+    print('Precision score for fold %d: %f' % (fold, Precision))
+    print('Recall score for fold %d: %f ' % (fold, Recall))
+    print('ROC-AUC score for fold %d: %f ' % (fold, ROC_AUC_Score))
+    print('--------------------------------')
+    val_results[fold] = (F1_Score, Precision, Recall, ROC_AUC_Score)
+    # write results in file
+    fold_res.writelines('\n---------VALIDATION-------------\n')
+    fold_res.writelines('F1-score for fold %d: %f \n' % (fold, F1_Score))
+    fold_res.writelines('Precision score for fold %d: %f \n' %
+                        (fold, Precision))
+    fold_res.writelines('Recall score for fold %d: %f \n' % (fold, Recall))
+    fold_res.writelines('ROC-AUC score for fold %d: %f \n' %
+                        (fold, ROC_AUC_Score))
+    fold_res.writelines('Training time(in seconds) %f: \n' %
+                        (end_time-start_time))
+    fold_res.writelines('\n----------------------------\n')
+
+    # Evaluation for this fold on test set
     ys, preds = [], []
     with torch.no_grad():
         # Iterate over the test data and generate predictions
@@ -152,7 +196,8 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
             #print("Output: ", out)
             preds.append((out > 0).float().cpu())
 
-    y, pred = torch.cat(ys, dim=0).numpy(), torch.cat(preds, dim=0).numpy()
+    y, pred = torch.cat(ys, dim=0).cpu().numpy(
+    ), torch.cat(preds, dim=0).cpu().numpy()
     # print("Label: ", y)
     # print("Pred: ", pred)
     # Compute and Print metrics
@@ -162,6 +207,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
     Recall = recall_score(y, pred, average='micro') if pred.sum() > 0 else 0
     ROC_AUC_Score = roc_auc_score(y, pred)
 
+    print('--------- TEST ---------------')
     print('F1-score for fold %d: %f ' % (fold, F1_Score))
     print('Precision score for fold %d: %f' % (fold, Precision))
     print('Recall score for fold %d: %f ' % (fold, Recall))
@@ -169,6 +215,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
     print('--------------------------------')
     results[fold] = (F1_Score, Precision, Recall, ROC_AUC_Score)
     # write results in file
+    fold_res.writelines('--------- TEST ---------------\n')
     fold_res.writelines('F1-score for fold %d: %f \n' % (fold, F1_Score))
     fold_res.writelines('Precision score for fold %d: %f \n' %
                         (fold, Precision))
@@ -181,7 +228,43 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
 
 fold_res.close()
 
-# Print fold results
+
+# Print fold results on validation data
+print(f'K-FOLD CROSS VALIDATION RESULTS FOR {k_folds} FOLDS')
+print('--------------------------------')
+F1_sum = Recall_sum = Precision_sum = ROC_AUC_sum = 0.0
+for key, value in val_results.items():
+    print(f'Fold {key}: {value} %')
+    F1_sum += value[0]
+    Precision_sum += value[1]
+    Recall_sum += value[2]
+    ROC_AUC_sum += value[3]
+
+training_time = np.array(training_time)
+avg_training_time = np.mean(training_time)
+
+#print(F1_sum, Precision_sum, Recall_sum)
+print('Average F1-score: %f' % (F1_sum/len(results.items())))
+print('Average precision-score: %f' % (Precision_sum/len(results.items())))
+print('Average recall-score: %f' % (Recall_sum / len(results.items())))
+print('Average ROC-AUC-score: %f' % (ROC_AUC_sum / len(results.items())))
+
+# write results in file
+final_res.writelines(
+    f'K-FOLD CROSS VALIDATION RESULTS FOR {k_folds} FOLDS ON VALIDATION DATA\n')
+final_res.writelines('Average F1-score: %f \n' % (F1_sum/len(results.items())))
+final_res.writelines('Average precision-score: %f \n' %
+                     (Precision_sum/len(results.items())))
+final_res.writelines('Average recall-score: %f \n' %
+                     (Recall_sum / len(results.items())))
+final_res.writelines('Average ROC-AUC-score: %f \n' %
+                     (ROC_AUC_sum / len(results.items())))
+final_res.writelines('Average Training time(in seconds): %f \n' %
+                     (avg_training_time))
+final_res.close()
+
+
+# Print fold results on test data
 print(f'K-FOLD CROSS VALIDATION RESULTS FOR {k_folds} FOLDS')
 print('--------------------------------')
 F1_sum = Recall_sum = Precision_sum = ROC_AUC_sum = 0.0
@@ -202,7 +285,8 @@ print('Average recall-score: %f' % (Recall_sum / len(results.items())))
 print('Average ROC-AUC-score: %f' % (ROC_AUC_sum / len(results.items())))
 
 # write results in file
-final_res.writelines(f'K-FOLD CROSS VALIDATION RESULTS FOR {k_folds} FOLDS\n')
+final_res.writelines(
+    f'K-FOLD CROSS VALIDATION RESULTS FOR {k_folds} FOLDS ON TEST DATA\n')
 final_res.writelines('Average F1-score: %f \n' % (F1_sum/len(results.items())))
 final_res.writelines('Average precision-score: %f \n' %
                      (Precision_sum/len(results.items())))

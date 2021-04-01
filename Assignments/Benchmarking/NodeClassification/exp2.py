@@ -7,6 +7,7 @@ hidden_dim = 256
 epochs = [100, 200, 300, 400, 500, 600, 700]
 
 #print(model_type, num_layers, hidden_dim, epochs, aggr)
+# put below folder name intead of results/SAGE and GCN/SAGE in filename strings in train.py
 os.system("mkdir plot_results")
 os.system("mkdir ./plot_results/SAGE")
 os.system("mkdir ./plot_results/GCN")

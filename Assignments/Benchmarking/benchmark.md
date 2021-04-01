@@ -137,8 +137,6 @@ _Read more about experiments in the report_
 
 ## References
 
-The baseline code was forked from the following repositories:
-
 Link Prediction PPI & Pairwise Node Classification Proteins: [P-GNN](https://github.com/JiaxuanYou/P-GNN)
 
 Link Prediction Brightkite:

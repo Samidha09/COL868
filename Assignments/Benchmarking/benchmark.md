@@ -8,7 +8,7 @@ In this assignment, we have performed a benchmarking exercise on **GCN** and **G
 2. Link Prediction - PPI and Brightkite dataset
 3. Multi-Class Node Classification - PPI dataset
 
-## Run:
+## Run (Google Colab):
 
 1. **Pairwise Node Classification**
 
@@ -19,14 +19,14 @@ In this assignment, we have performed a benchmarking exercise on **GCN** and **G
 - 2-layer GCN, proteins dataset, pairwise node classification task
 
 ```bash
-python main.py --model GCN --layer_num 2 --dataset proteins --task link_pair
+!python main.py --model GCN --layer_num 2 --dataset proteins --task link_pair
 ```
 
 - 3-layer GraphSAGE, proteins dataset
   GraphSAGE, pairwise node classification task
 
 ```bash
-python main.py --model SAGE --layer_num 3 --dataset proteins --task link_pair
+!python main.py --model SAGE --layer_num 3 --dataset proteins --task link_pair
 ```
 
 2. **Link Prediction**

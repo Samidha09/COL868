@@ -8,6 +8,28 @@ In this assignment, we have performed a benchmarking exercise on **GCN** and **G
 2. Link Prediction - PPI and Brightkite dataset
 3. Multi-Class Node Classification - PPI dataset
 
+## Setup
+
+These are the python packages required to run the above codes in Google Colab:
+
+```bash
+!pip install torch
+
+!pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+
+!pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+
+!pip install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+
+!pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+
+!pip install torch-geometric
+
+!pip install tensorboardx
+
+!pip install dgl
+```
+
 ## Run (Google Colab):
 
 1. **Pairwise Node Classification**
@@ -41,13 +63,13 @@ In this assignment, we have performed a benchmarking exercise on **GCN** and **G
 - 2-layer GCN, PPI dataset, link prediction task
 
 ```bash
-!python3 link_pred.py --model_type GCN --num_layers 2 --epochs 5
+!python link_pred.py --model_type GCN --num_layers 2 --epochs 5
 ```
 
 - 3-layer GraphSAGE, PPI dataset, link prediction task
 
 ```bash
-python main.py --model SAGE --layer_num 3 --dataset proteins --task link
+!python main.py --model SAGE --layer_num 3 --dataset proteins --task link
 ```
 
 **Brightkite**
@@ -60,13 +82,13 @@ python main.py --model SAGE --layer_num 3 --dataset proteins --task link
 - 2-layer GCN, Brightkite dataset, link prediction task
 
 ```bash
-!python3 link_pred.py --model_type SAGE --num_layers 2
+!python link_pred.py --model_type SAGE --num_layers 2
 ```
 
 - 2-layer GraphSAGE, Brightkite dataset, link prediction task
 
 ```bash
-!python3 link_pred.py --model_type SAGE --num_layers 2
+!python link_pred.py --model_type SAGE --num_layers 2
 ```
 
 _**Note**: Currently link prediction on Brightkite is only written for 2 layer models._
@@ -82,13 +104,13 @@ _**Note**: Currently link prediction on Brightkite is only written for 2 layer m
 3-layer GraphSAGE, hidden dimensions 256, aggregator max, proteins dataset, multi-class node classification task
 
 ```bash
-!python3 train.py --model_type=SAGE --num_layers=3 --hidden_dim=256 --aggregator=max
+!python train.py --model_type=SAGE --num_layers=3 --hidden_dim=256 --aggregator=max
 ```
 
 2-layer GCN, hidden dimensions 256,proteins dataset, multi-class node classification task
 
 ```bash
-!python3 train.py --model_type=GCN --num_layers=3 --hidden_dim=256
+!python train.py --model_type=GCN --num_layers=3 --hidden_dim=256
 ```
 
 _**Note**: Possible aggregators for GraphSAGE: [mean, max, add]_
@@ -112,28 +134,6 @@ _**Note**: Possible aggregators for GraphSAGE: [mean, max, add]_
 ```
 
 _Read more about experiments in the report_
-
-## Installations
-
-These are the python packages required to run the above codes in Google Colab:
-
-```bash
-!pip install torch
-
-!pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
-
-!pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
-
-!pip install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
-
-!pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
-
-!pip install torch-geometric
-
-!pip install tensorboardx
-
-!pip install dgl
-```
 
 ## References
 

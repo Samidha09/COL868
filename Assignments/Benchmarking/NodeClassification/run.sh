@@ -1,1 +1,1 @@
-python3 train.py --model_type=SAGE --num_layers=3 --hidden_dim=256 --aggregator=max
+python train.py --model_type=SAGE --num_layers=3 --hidden_dim=256 --aggregator=max

@@ -38,17 +38,17 @@ These are the python packages required to run the above codes in Google Colab:
 %cd PNC_LP_ppi/P-GNN-master/
 ```
 
-- 2-layer GCN, proteins dataset, pairwise node classification task
+- 2-layer GCN, protein dataset, pairwise node classification task
 
 ```bash
-!python main.py --model GCN --layer_num 2 --dataset proteins --task link_pair
+!python main.py --model GCN --layer_num 2 --dataset protein --task link_pair
 ```
 
-- 3-layer GraphSAGE, proteins dataset
+- 3-layer GraphSAGE, protein dataset
   GraphSAGE, pairwise node classification task
 
 ```bash
-!python main.py --model SAGE --layer_num 3 --dataset proteins --task link_pair
+!python main.py --model SAGE --layer_num 3 --dataset protein --task link_pair
 ```
 
 2. **Link Prediction**
@@ -63,13 +63,13 @@ These are the python packages required to run the above codes in Google Colab:
 - 2-layer GCN, PPI dataset, link prediction task
 
 ```bash
-!python link_pred.py --model_type GCN --num_layers 2 --epochs 5
+!python main.py --model GCN --layer_num 2 --dataset ppi --task link
 ```
 
 - 3-layer GraphSAGE, PPI dataset, link prediction task
 
 ```bash
-!python main.py --model SAGE --layer_num 3 --dataset proteins --task link
+!python main.py --model SAGE --layer_num 3 --dataset ppi --task link
 ```
 
 **Brightkite**

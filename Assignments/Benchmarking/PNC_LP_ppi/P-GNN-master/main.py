@@ -211,11 +211,11 @@ for dataset_name in datasets_name:
                     auc_train += roc_auc_score(label.flatten().cpu(
                     ).numpy(), out_act(pred).flatten().data.cpu().numpy())
                     f1_train += f1_score(label.flatten().cpu().numpy(),
-                                         (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                                         (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
                     prec_train += precision_score(label.flatten().cpu().numpy(
-                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
                     recall_train += recall_score(label.flatten().cpu().numpy(
-                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
 
                     end_time = time.time()
                     train_time.append(end_time - start_time)
@@ -237,11 +237,11 @@ for dataset_name in datasets_name:
                     auc_val += roc_auc_score(label.flatten().cpu().numpy(),
                                              out_act(pred).flatten().data.cpu().numpy())
                     f1_val += f1_score(label.flatten().cpu().numpy(),
-                                       (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                                       (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
                     prec_val += precision_score(label.flatten().cpu().numpy(
-                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
                     recall_val += recall_score(label.flatten().cpu().numpy(
-                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
 
                     # test
                     edge_mask_test = np.concatenate(
@@ -262,13 +262,13 @@ for dataset_name in datasets_name:
                     # print("Pred: ", out_act(
                     #     pred).flatten().data.cpu().numpy())
                     auc_test += roc_auc_score(label.flatten().cpu().numpy(),
-                                              out_act(pred).flatten().data.cpu().numpy())
+                                              out_act(pred).flatten().data.cpu().numpy(), average='micro')
                     f1_test += f1_score(label.flatten().cpu().numpy(),
-                                        (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                                        (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
                     prec_test += precision_score(label.flatten().cpu().numpy(
-                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
                     recall_test += recall_score(label.flatten().cpu().numpy(
-                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy())
+                    ), (out_act(pred) >= 0.5).flatten().data.cpu().numpy(), average='micro')
 
                 loss_train /= id+1
                 loss_val /= id+1

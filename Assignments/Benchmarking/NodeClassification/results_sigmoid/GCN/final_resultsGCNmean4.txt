@@ -1,6 +1,0 @@
-K-FOLD CROSS VALIDATION RESULTS FOR 5 FOLDS
-Average F1-score: 0.477105 
-Average precision-score: 0.661345 
-Average recall-score: 0.374603 
-Average ROC-AUC-score: 0.531285 
-Average Training time(in seconds): 49.170871 

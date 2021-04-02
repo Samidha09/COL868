@@ -394,69 +394,69 @@ def load_graphs(dataset_str):
 
         features = [train_feats[id_temp, :] + 0.1 for id_temp in id_all]
 
-    elif dataset_str == 'brightkite':
-        dataset_dir = 'data/Brightkite'
-        print("Loading data...")
-        G = nx.read_edgelist(
-            open(dataset_dir + "/Brightkite_edges.txt", "rb"))
+    # elif dataset_str == 'brightkite':
+    #     dataset_dir = 'data/Brightkite'
+    #     print("Loading data...")
+    #     G = nx.read_edgelist(
+    #         open(dataset_dir + "/Brightkite_edges.txt", "rb"))
 
-        node_dict = {}
-        for id, node in enumerate(G.nodes()):
-            node_dict[node] = id
-        feature = []
-        feature_id = []
+    #     node_dict = {}
+    #     for id, node in enumerate(G.nodes()):
+    #         node_dict[node] = id
+    #     feature = []
+    #     feature_id = []
 
-        fp = open(dataset_dir + "/Brightkite_totalCheckins.txt", "r")
-        lines = fp.readlines()
+    #     fp = open(dataset_dir + "/Brightkite_totalCheckins.txt", "r")
+    #     lines = fp.readlines()
 
-        for line in lines:
-            line = line.strip()
-            line = line.split()
-            if (len(line) < 5):
-                continue
-            feature_id.append(int(line[0]))
-            feature.append([time.mktime(time.strptime(
-                line[1], '%Y-%m-%dT%H:%M:%SZ')), float(line[2]), float(line[3])])
-            # print(line)
+    #     for line in lines:
+    #         line = line.strip()
+    #         line = line.split()
+    #         if (len(line) < 5):
+    #             continue
+    #         feature_id.append(int(line[0]))
+    #         feature.append([time.mktime(time.strptime(
+    #             line[1], '%Y-%m-%dT%H:%M:%SZ')), float(line[2]), float(line[3])])
+    #         # print(line)
 
-        feature = np.array(feature)
-        feature[:, 0] = np.log(feature[:, 0] + 1.0)
-        feature[:, 1] = np.log(
-            feature[:, 1] - min(np.min(feature[:, 1]), -1)+1)
-        feature[:, 2] = np.log(
-            feature[:, 2] - min(np.min(feature[:, 2]), -1)+1)
+    #     feature = np.array(feature)
+    #     feature[:, 0] = np.log(feature[:, 0] + 1.0)
+    #     feature[:, 1] = np.log(
+    #         feature[:, 1] - min(np.min(feature[:, 1]), -1)+1)
+    #     feature[:, 2] = np.log(
+    #         feature[:, 2] - min(np.min(feature[:, 2]), -1)+1)
 
-        feature_map = {}
-        for i in range(len(feature_id)):
-            if (feature_id[i] not in feature_map):
-                feature_map[feature_id[i]] = []
-            feature_map[feature_id[i]].append(feature[i])
-        # print(feature_map)
-        feature_actual_map = {}
-        for k in feature_map:
-            feature_actual_map[k] = np.mean(feature_map[k], axis=0)
-        # print(feature_actual_map)
+    #     feature_map = {}
+    #     for i in range(len(feature_id)):
+    #         if (feature_id[i] not in feature_map):
+    #             feature_map[feature_id[i]] = []
+    #         feature_map[feature_id[i]].append(feature[i])
+    #     # print(feature_map)
+    #     feature_actual_map = {}
+    #     for k in feature_map:
+    #         feature_actual_map[k] = np.mean(feature_map[k], axis=0)
+    #     # print(feature_actual_map)
 
-        comps = [comp for comp in nx.connected_components(G) if len(comp) > 10]
-        graphs = [G.subgraph(comp) for comp in comps]
-        id_all = []
-        features = []
-        count = 0
-        for comp in comps:
-            id_temp = []
-            feat_temp = []
-            for node in comp:
-                id = node_dict[node]
-                id_temp.append(id)
-                if (id not in feature_actual_map):
-                    feat_temp.append([0.0, 0.0, 0.0])
-                    count = count+1
-                else:
-                    feat_temp.append(feature_actual_map[id])
-                id_all.append(np.array(id_temp))
-                features.append(np.array(feat_temp))
+    #     comps = [comp for comp in nx.connected_components(G) if len(comp) > 10]
+    #     graphs = [G.subgraph(comp) for comp in comps]
+    #     id_all = []
+    #     features = []
+    #     count = 0
+    #     for comp in comps:
+    #         id_temp = []
+    #         feat_temp = []
+    #         for node in comp:
+    #             id = node_dict[node]
+    #             id_temp.append(id)
+    #             if (id not in feature_actual_map):
+    #                 feat_temp.append([0.0, 0.0, 0.0])
+    #                 count = count+1
+    #             else:
+    #                 feat_temp.append(feature_actual_map[id])
+    #             id_all.append(np.array(id_temp))
+    #             features.append(np.array(feat_temp))
 
-        print("Not found features of %d nodes" % {count})
+    #     print("Not found features of %d nodes" % {count})
 
     else:
         raise NotImplementedError

@@ -1,0 +1,450 @@
+Epoch 0
+Loss 0.7434
+Train AUC: 0.9821	Val AUC: 0.9823	Test AUC: 0.9788
+Train F1: 0.6667	Val F1: 0.6667	Test F1: 0.6667
+Train Precision: 0.5000	Val Precision: 0.5000	Test Precision: 0.5000
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 0.0905
+
+ ----------------------------- 
+Epoch 20
+Loss 0.5039
+Train AUC: 0.9810	Val AUC: 0.9820	Test AUC: 0.9817
+Train F1: 0.8419	Val F1: 0.8370	Test F1: 0.8243
+Train Precision: 0.7269	Val Precision: 0.7197	Test Precision: 0.7011
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 0.3941
+
+ ----------------------------- 
+Epoch 40
+Loss 0.4994
+Train AUC: 0.9808	Val AUC: 0.9826	Test AUC: 0.9818
+Train F1: 0.8561	Val F1: 0.8297	Test F1: 0.8435
+Train Precision: 0.7484	Val Precision: 0.7090	Test Precision: 0.7294
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 0.7109
+
+ ----------------------------- 
+Epoch 60
+Loss 0.4974
+Train AUC: 0.9812	Val AUC: 0.9828	Test AUC: 0.9803
+Train F1: 0.8579	Val F1: 0.8279	Test F1: 0.8379
+Train Precision: 0.7512	Val Precision: 0.7063	Test Precision: 0.7211
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 1.0242
+
+ ----------------------------- 
+Epoch 80
+Loss 0.4998
+Train AUC: 0.9806	Val AUC: 0.9829	Test AUC: 0.9808
+Train F1: 0.8477	Val F1: 0.8216	Test F1: 0.8243
+Train Precision: 0.7357	Val Precision: 0.6972	Test Precision: 0.7011
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 1.3379
+
+ ----------------------------- 
+Epoch 100
+Loss 0.4965
+Train AUC: 0.9818	Val AUC: 0.9817	Test AUC: 0.9809
+Train F1: 0.8600	Val F1: 0.8252	Test F1: 0.8342
+Train Precision: 0.7543	Val Precision: 0.7024	Test Precision: 0.7156
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 1.6444
+
+ ----------------------------- 
+Epoch 120
+Loss 0.4982
+Train AUC: 0.9815	Val AUC: 0.9824	Test AUC: 0.9813
+Train F1: 0.8644	Val F1: 0.8288	Test F1: 0.8416
+Train Precision: 0.7611	Val Precision: 0.7076	Test Precision: 0.7266
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 1.9723
+
+ ----------------------------- 
+Epoch 140
+Loss 0.4967
+Train AUC: 0.9811	Val AUC: 0.9811	Test AUC: 0.9806
+Train F1: 0.8633	Val F1: 0.8288	Test F1: 0.8407
+Train Precision: 0.7594	Val Precision: 0.7076	Test Precision: 0.7252
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 2.2896
+
+ ----------------------------- 
+Epoch 160
+Loss 0.4971
+Train AUC: 0.9815	Val AUC: 0.9813	Test AUC: 0.9800
+Train F1: 0.8606	Val F1: 0.8361	Test F1: 0.8361
+Train Precision: 0.7553	Val Precision: 0.7183	Test Precision: 0.7183
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 2.6084
+
+ ----------------------------- 
+Epoch 180
+Loss 0.4962
+Train AUC: 0.9814	Val AUC: 0.9812	Test AUC: 0.9800
+Train F1: 0.8544	Val F1: 0.8288	Test F1: 0.8333
+Train Precision: 0.7458	Val Precision: 0.7076	Test Precision: 0.7143
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 2.9342
+
+ ----------------------------- 
+Epoch 200
+Loss 0.4975
+Train AUC: 0.9811	Val AUC: 0.9819	Test AUC: 0.9801
+Train F1: 0.8613	Val F1: 0.8288	Test F1: 0.8361
+Train Precision: 0.7564	Val Precision: 0.7076	Test Precision: 0.7183
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 3.2571
+
+ ----------------------------- 
+Epoch 220
+Loss 0.4946
+Train AUC: 0.9813	Val AUC: 0.9809	Test AUC: 0.9797
+Train F1: 0.8659	Val F1: 0.8279	Test F1: 0.8435
+Train Precision: 0.7634	Val Precision: 0.7063	Test Precision: 0.7294
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 3.5698
+
+ ----------------------------- 
+Epoch 240
+Loss 0.4946
+Train AUC: 0.9819	Val AUC: 0.9810	Test AUC: 0.9804
+Train F1: 0.8605	Val F1: 0.8243	Test F1: 0.8407
+Train Precision: 0.7551	Val Precision: 0.7011	Test Precision: 0.7252
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 3.9403
+
+ ----------------------------- 
+Epoch 260
+Loss 0.4945
+Train AUC: 0.9814	Val AUC: 0.9825	Test AUC: 0.9807
+Train F1: 0.8661	Val F1: 0.8288	Test F1: 0.8435
+Train Precision: 0.7638	Val Precision: 0.7076	Test Precision: 0.7294
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 4.2727
+
+ ----------------------------- 
+Epoch 280
+Loss 0.4945
+Train AUC: 0.9815	Val AUC: 0.9812	Test AUC: 0.9808
+Train F1: 0.8568	Val F1: 0.8234	Test F1: 0.8352
+Train Precision: 0.7495	Val Precision: 0.6998	Test Precision: 0.7170
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 4.5821
+
+ ----------------------------- 
+Epoch 300
+Loss 0.4947
+Train AUC: 0.9809	Val AUC: 0.9822	Test AUC: 0.9804
+Train F1: 0.8555	Val F1: 0.8181	Test F1: 0.8315
+Train Precision: 0.7475	Val Precision: 0.6922	Test Precision: 0.7116
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 4.8909
+
+ ----------------------------- 
+Epoch 320
+Loss 0.4944
+Train AUC: 0.9812	Val AUC: 0.9803	Test AUC: 0.9792
+Train F1: 0.8590	Val F1: 0.8216	Test F1: 0.8333
+Train Precision: 0.7528	Val Precision: 0.6972	Test Precision: 0.7143
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 5.2057
+
+ ----------------------------- 
+Epoch 340
+Loss 0.4943
+Train AUC: 0.9813	Val AUC: 0.9818	Test AUC: 0.9800
+Train F1: 0.8586	Val F1: 0.8181	Test F1: 0.8333
+Train Precision: 0.7523	Val Precision: 0.6922	Test Precision: 0.7143
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 5.5139
+
+ ----------------------------- 
+Epoch 360
+Loss 0.4951
+Train AUC: 0.9815	Val AUC: 0.9820	Test AUC: 0.9803
+Train F1: 0.8559	Val F1: 0.8207	Test F1: 0.8288
+Train Precision: 0.7480	Val Precision: 0.6960	Test Precision: 0.7076
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 5.8483
+
+ ----------------------------- 
+Epoch 380
+Loss 0.4946
+Train AUC: 0.9813	Val AUC: 0.9808	Test AUC: 0.9795
+Train F1: 0.8645	Val F1: 0.8216	Test F1: 0.8416
+Train Precision: 0.7613	Val Precision: 0.6972	Test Precision: 0.7266
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 6.1839
+
+ ----------------------------- 
+Epoch 400
+Loss 0.4946
+Train AUC: 0.9812	Val AUC: 0.9818	Test AUC: 0.9797
+Train F1: 0.8575	Val F1: 0.8181	Test F1: 0.8297
+Train Precision: 0.7506	Val Precision: 0.6922	Test Precision: 0.7090
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 6.5051
+
+ ----------------------------- 
+Epoch 420
+Loss 0.4948
+Train AUC: 0.9817	Val AUC: 0.9826	Test AUC: 0.9792
+Train F1: 0.8584	Val F1: 0.8252	Test F1: 0.8297
+Train Precision: 0.7519	Val Precision: 0.7024	Test Precision: 0.7090
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 6.8509
+
+ ----------------------------- 
+Epoch 440
+Loss 0.4947
+Train AUC: 0.9815	Val AUC: 0.9820	Test AUC: 0.9802
+Train F1: 0.8563	Val F1: 0.8172	Test F1: 0.8324
+Train Precision: 0.7488	Val Precision: 0.6909	Test Precision: 0.7129
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 7.1701
+
+ ----------------------------- 
+Epoch 460
+Loss 0.4948
+Train AUC: 0.9819	Val AUC: 0.9807	Test AUC: 0.9800
+Train F1: 0.8638	Val F1: 0.8288	Test F1: 0.8361
+Train Precision: 0.7602	Val Precision: 0.7076	Test Precision: 0.7183
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 7.4790
+
+ ----------------------------- 
+Epoch 480
+Loss 0.4947
+Train AUC: 0.9812	Val AUC: 0.9822	Test AUC: 0.9793
+Train F1: 0.8572	Val F1: 0.8216	Test F1: 0.8288
+Train Precision: 0.7501	Val Precision: 0.6972	Test Precision: 0.7076
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 7.8238
+
+ ----------------------------- 
+Epoch 500
+Loss 0.4948
+Train AUC: 0.9813	Val AUC: 0.9813	Test AUC: 0.9802
+Train F1: 0.8579	Val F1: 0.8181	Test F1: 0.8288
+Train Precision: 0.7512	Val Precision: 0.6922	Test Precision: 0.7076
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 8.1490
+
+ ----------------------------- 
+Epoch 520
+Loss 0.4947
+Train AUC: 0.9814	Val AUC: 0.9809	Test AUC: 0.9800
+Train F1: 0.8597	Val F1: 0.8252	Test F1: 0.8315
+Train Precision: 0.7540	Val Precision: 0.7024	Test Precision: 0.7116
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 8.4602
+
+ ----------------------------- 
+Epoch 540
+Loss 0.4946
+Train AUC: 0.9813	Val AUC: 0.9818	Test AUC: 0.9798
+Train F1: 0.8582	Val F1: 0.8198	Test F1: 0.8315
+Train Precision: 0.7515	Val Precision: 0.6947	Test Precision: 0.7116
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 8.7711
+
+ ----------------------------- 
+Epoch 560
+Loss 0.4944
+Train AUC: 0.9814	Val AUC: 0.9812	Test AUC: 0.9790
+Train F1: 0.8549	Val F1: 0.8190	Test F1: 0.8279
+Train Precision: 0.7466	Val Precision: 0.6934	Test Precision: 0.7063
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 9.0810
+
+ ----------------------------- 
+Epoch 580
+Loss 0.4944
+Train AUC: 0.9811	Val AUC: 0.9803	Test AUC: 0.9788
+Train F1: 0.8577	Val F1: 0.8181	Test F1: 0.8342
+Train Precision: 0.7508	Val Precision: 0.6922	Test Precision: 0.7156
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 9.3914
+
+ ----------------------------- 
+Epoch 600
+Loss 0.4952
+Train AUC: 0.9812	Val AUC: 0.9801	Test AUC: 0.9796
+Train F1: 0.8569	Val F1: 0.8190	Test F1: 0.8288
+Train Precision: 0.7497	Val Precision: 0.6934	Test Precision: 0.7076
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 9.7088
+
+ ----------------------------- 
+Epoch 620
+Loss 0.4950
+Train AUC: 0.9816	Val AUC: 0.9804	Test AUC: 0.9796
+Train F1: 0.8599	Val F1: 0.8216	Test F1: 0.8352
+Train Precision: 0.7542	Val Precision: 0.6972	Test Precision: 0.7170
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 10.0345
+
+ ----------------------------- 
+Epoch 640
+Loss 0.4953
+Train AUC: 0.9813	Val AUC: 0.9822	Test AUC: 0.9801
+Train F1: 0.8571	Val F1: 0.8155	Test F1: 0.8324
+Train Precision: 0.7499	Val Precision: 0.6884	Test Precision: 0.7129
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 10.3534
+
+ ----------------------------- 
+Epoch 660
+Loss 0.4947
+Train AUC: 0.9816	Val AUC: 0.9816	Test AUC: 0.9795
+Train F1: 0.8590	Val F1: 0.8225	Test F1: 0.8361
+Train Precision: 0.7528	Val Precision: 0.6985	Test Precision: 0.7183
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 10.6687
+
+ ----------------------------- 
+Epoch 680
+Loss 0.4950
+Train AUC: 0.9815	Val AUC: 0.9830	Test AUC: 0.9794
+Train F1: 0.8557	Val F1: 0.8190	Test F1: 0.8333
+Train Precision: 0.7478	Val Precision: 0.6934	Test Precision: 0.7143
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 10.9909
+
+ ----------------------------- 
+Epoch 700
+Loss 0.4949
+Train AUC: 0.9811	Val AUC: 0.9813	Test AUC: 0.9794
+Train F1: 0.8530	Val F1: 0.8198	Test F1: 0.8288
+Train Precision: 0.7436	Val Precision: 0.6947	Test Precision: 0.7076
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 11.3076
+
+ ----------------------------- 
+Epoch 720
+Loss 0.4951
+Train AUC: 0.9811	Val AUC: 0.9818	Test AUC: 0.9803
+Train F1: 0.8571	Val F1: 0.8190	Test F1: 0.8306
+Train Precision: 0.7499	Val Precision: 0.6934	Test Precision: 0.7103
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 11.6154
+
+ ----------------------------- 
+Epoch 740
+Loss 0.4946
+Train AUC: 0.9816	Val AUC: 0.9822	Test AUC: 0.9789
+Train F1: 0.8525	Val F1: 0.8181	Test F1: 0.8252
+Train Precision: 0.7429	Val Precision: 0.6922	Test Precision: 0.7024
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 11.9594
+
+ ----------------------------- 
+Epoch 760
+Loss 0.4950
+Train AUC: 0.9814	Val AUC: 0.9817	Test AUC: 0.9790
+Train F1: 0.8542	Val F1: 0.8198	Test F1: 0.8306
+Train Precision: 0.7455	Val Precision: 0.6947	Test Precision: 0.7103
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 12.2726
+
+ ----------------------------- 
+Epoch 780
+Loss 0.4950
+Train AUC: 0.9813	Val AUC: 0.9806	Test AUC: 0.9794
+Train F1: 0.8541	Val F1: 0.8181	Test F1: 0.8315
+Train Precision: 0.7453	Val Precision: 0.6922	Test Precision: 0.7116
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 12.5898
+
+ ----------------------------- 
+Epoch 800
+Loss 0.4949
+Train AUC: 0.9812	Val AUC: 0.9813	Test AUC: 0.9790
+Train F1: 0.8584	Val F1: 0.8234	Test F1: 0.8324
+Train Precision: 0.7519	Val Precision: 0.6998	Test Precision: 0.7129
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 12.9005
+
+ ----------------------------- 
+Epoch 820
+Loss 0.4946
+Train AUC: 0.9816	Val AUC: 0.9809	Test AUC: 0.9811
+Train F1: 0.8536	Val F1: 0.8163	Test F1: 0.8306
+Train Precision: 0.7446	Val Precision: 0.6897	Test Precision: 0.7103
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 13.2106
+
+ ----------------------------- 
+Epoch 840
+Loss 0.4953
+Train AUC: 0.9818	Val AUC: 0.9815	Test AUC: 0.9786
+Train F1: 0.8550	Val F1: 0.8163	Test F1: 0.8315
+Train Precision: 0.7467	Val Precision: 0.6897	Test Precision: 0.7116
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 13.5253
+
+ ----------------------------- 
+Epoch 860
+Loss 0.4960
+Train AUC: 0.9813	Val AUC: 0.9821	Test AUC: 0.9800
+Train F1: 0.8464	Val F1: 0.8155	Test F1: 0.8252
+Train Precision: 0.7338	Val Precision: 0.6884	Test Precision: 0.7024
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 13.8435
+
+ ----------------------------- 
+Epoch 880
+Loss 0.4945
+Train AUC: 0.9816	Val AUC: 0.9816	Test AUC: 0.9800
+Train F1: 0.8542	Val F1: 0.8181	Test F1: 0.8315
+Train Precision: 0.7455	Val Precision: 0.6922	Test Precision: 0.7116
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 14.1538
+
+ ----------------------------- 
+Epoch 900
+Loss 0.4943
+Train AUC: 0.9814	Val AUC: 0.9808	Test AUC: 0.9808
+Train F1: 0.8553	Val F1: 0.8216	Test F1: 0.8306
+Train Precision: 0.7471	Val Precision: 0.6972	Test Precision: 0.7103
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 14.4677
+
+ ----------------------------- 
+Epoch 920
+Loss 0.4948
+Train AUC: 0.9816	Val AUC: 0.9813	Test AUC: 0.9805
+Train F1: 0.8509	Val F1: 0.8172	Test F1: 0.8261
+Train Precision: 0.7406	Val Precision: 0.6909	Test Precision: 0.7037
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 14.7926
+
+ ----------------------------- 
+Epoch 940
+Loss 0.4947
+Train AUC: 0.9816	Val AUC: 0.9818	Test AUC: 0.9801
+Train F1: 0.8567	Val F1: 0.8216	Test F1: 0.8324
+Train Precision: 0.7493	Val Precision: 0.6972	Test Precision: 0.7129
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 15.1106
+
+ ----------------------------- 
+Epoch 960
+Loss 0.4952
+Train AUC: 0.9813	Val AUC: 0.9816	Test AUC: 0.9797
+Train F1: 0.8507	Val F1: 0.8207	Test F1: 0.8324
+Train Precision: 0.7402	Val Precision: 0.6960	Test Precision: 0.7129
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 15.4214
+
+ ----------------------------- 
+Epoch 980
+Loss 0.4948
+Train AUC: 0.9813	Val AUC: 0.9817	Test AUC: 0.9807
+Train F1: 0.8608	Val F1: 0.8207	Test F1: 0.8342
+Train Precision: 0.7557	Val Precision: 0.6960	Test Precision: 0.7156
+Train Recall: 1.0000	Val Recall: 1.0000	Test Recall: 1.0000
+Training_Time: 15.7344
+
+ ----------------------------- 

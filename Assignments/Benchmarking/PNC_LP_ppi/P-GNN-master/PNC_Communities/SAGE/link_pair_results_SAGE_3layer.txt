@@ -1,0 +1,6 @@
+Task: link_pair - Results
+F1-score: 0.875576 +/- 0.0 
+Precision: 0.778689 +/- 0.0 
+Recall: 1.0 +/- 0.0 
+ROC-AUC: 0.980679 +/- 0.0 
+Training time per fold : 8.1869198513031

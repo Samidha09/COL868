@@ -8,6 +8,10 @@ In this assignment, we have performed a benchmarking exercise on **GCN** and **G
 2. Link Prediction - PPI and Brightkite dataset
 3. Multi-Class Node Classification - PPI dataset
 
+## Report
+
+Link to report: [Report](https://github.com/Samidha09/COL868/blob/master/Assignments/Benchmarking/Benchmarking.pdf)
+
 ## Setup
 
 These are the python packages required to run the above codes in Google Colab:
